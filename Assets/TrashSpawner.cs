@@ -15,7 +15,7 @@ public class TrashSpawner : MonoBehaviour
 
     void Start()
     {
-        EventManager.ExampleEvent += SpawnTrash;
+        EventManager.DebugSpawnEvent += SpawnTrash;
 
         // StartCoroutine(TrashWave());
     }
@@ -69,7 +69,7 @@ public class TrashSpawner : MonoBehaviour
     }
 
     void OnDisable(){
-        EventManager.ExampleEvent -= SpawnTrash;
+        EventManager.DebugSpawnEvent -= SpawnTrash;
     }
 
     IEnumerator TrashWave()
