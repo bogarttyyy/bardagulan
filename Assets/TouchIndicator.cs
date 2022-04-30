@@ -10,7 +10,7 @@ public class TouchIndicator : MonoBehaviour
 
         if (col.gameObject.TryGetComponent<Trash>(out Trash result))
         {
-            EventManager.TrashHitEvent();
+            EventManager.TrashHitEvent(result);
             Destroy(col.gameObject);
         }
     }

@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
     public static event Action OnSliceDragEvent;
     public static event Action OnSliceUpEvent;
     public static event Action OnTrashHitEvent;
+    public static event Action<float> OnAddPoints;
 
     private void Update()
     {
@@ -28,7 +29,11 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public static void TrashHitEvent(){
+    public static void TrashHitEvent(Trash trash){
+
+        // You can do something with trash object
+
         OnTrashHitEvent?.Invoke();
+        OnAddPoints?.Invoke(trash.pointValue);
     }
 }

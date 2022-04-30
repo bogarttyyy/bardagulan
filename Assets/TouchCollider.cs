@@ -17,10 +17,14 @@ public class TouchCollider : MonoBehaviour
                 // HIT
                 GameObject hitGameObject = hit.collider.gameObject;
 
-                Debug.Log($"{hitGameObject.name}: {hitGameObject.transform.position}");
+                // Debug.Log($"{hitGameObject.name}: {hitGameObject.transform.position}");
                 
-                EventManager.TrashHitEvent();
-                Destroy(hit.collider.gameObject);
+                if (hit.collider.gameObject.TryGetComponent<Trash>(out Trash trash))
+                {
+                    Debug.Log($"{trash.gameObject.GetType()}: {trash.pointValue}");
+                    EventManager.TrashHitEvent(trash);
+                    Destroy(hit.collider.gameObject);
+                }
             }
 
             
