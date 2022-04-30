@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        scoreText.text = $"Score: {score}";
         EventManager.OnAddPoints += AddScore;
     }
 
@@ -27,6 +28,6 @@ public class LevelManager : MonoBehaviour
 
     public void AddScore(float points){
         score += points;
-        scoreText.text = $"Babi: {score}";
+        scoreText.text = $"Score: {score}";
     }
 }
