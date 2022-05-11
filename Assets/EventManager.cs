@@ -12,6 +12,7 @@ public class EventManager : MonoBehaviour
     public static event Action OnSliceUpEvent;
     public static event Action OnRoseHitEvent;
     public static event Action OnTrashOutOfBounds;
+    public static event Action OnGameOver;
     public static event Action<float> OnAddPoints;
     // public static event Action OnTrashHitEvent;
 
@@ -59,5 +60,9 @@ public class EventManager : MonoBehaviour
 
     public static void TrashOutOfBoundsEvent(){
         OnTrashOutOfBounds?.Invoke();
+    }
+
+    public static void GameOverEvent(){
+        OnGameOver?.Invoke();
     }
 }

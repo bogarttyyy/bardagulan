@@ -49,7 +49,12 @@ public class Health : MonoBehaviour
             {
                 hearts[i].enabled = false;
             }
-        }    
+        }
+
+        if (health <= 0)
+        {
+            EventManager.GameOverEvent();
+        }
     }
 
     private void OnDestroy() {

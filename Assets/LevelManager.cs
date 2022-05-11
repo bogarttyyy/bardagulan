@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,9 @@ public class LevelManager : MonoBehaviour
     public RoseSpawner roseSpawner;
     public Text scoreText;
 
+    public GameObject endScreen;
+    public TextMeshProUGUI endScore;
+
     private float roseTimerReset;
 
     void Start()
@@ -26,6 +30,7 @@ public class LevelManager : MonoBehaviour
         roseTimerReset = roseTimer;
         scoreText.text = $"Score: {score}";
         EventManager.OnAddPoints += AddScore;
+        EventManager.OnGameOver += GameOver;
     }
 
     // Update is called once per frame
@@ -40,6 +45,11 @@ public class LevelManager : MonoBehaviour
         scoreText.text = $"Score: {score}";
     }
 
+    public void GameOver(){
+        endScore.text = $"{score}";
+        endScreen.SetActive(true);
+    }
+
     void SpawnRose(){
         roseTimer -= 1 * Time.deltaTime;
 
@@ -49,7 +59,8 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void OnDispose(){
+    void OnDestroy(){
         EventManager.OnAddPoints -= AddScore;
+        EventManager.OnGameOver -= GameOver;
     }
 }
