@@ -7,10 +7,6 @@ public class TrashSpawner : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> TrashCollection;
-
-    public float forceX = 10f;
-    public float forceY = 10f;
-
     private float spawnTime = 1f;
 
     void Start()

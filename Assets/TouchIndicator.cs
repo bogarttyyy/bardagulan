@@ -8,10 +8,9 @@ public class TouchIndicator : MonoBehaviour
     {
         Debug.Log("HIT");
 
-        if (col.gameObject.TryGetComponent<Trash>(out Trash result))
+        if (col.gameObject.TryGetComponent<Trash>(out Trash trash))
         {
-            EventManager.TrashHitEvent(result);
-            Destroy(col.gameObject);
+            EventManager.TrashHitEvent(trash);
         }
     }
 }

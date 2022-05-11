@@ -19,20 +19,17 @@ public class TouchCollider : MonoBehaviour
 
                 // Debug.Log($"{hitGameObject.name}: {hitGameObject.transform.position}");
                 
-                if (hit.collider.gameObject.TryGetComponent<Trash>(out Trash trash))
+                if (hitGameObject.TryGetComponent<Trash>(out Trash trash))
                 {
                     Debug.Log($"{trash.gameObject.GetType()}: {trash.pointValue}");
                     EventManager.TrashHitEvent(trash);
-                    Destroy(hit.collider.gameObject);
+                }
+
+                if (hitGameObject.TryGetComponent<Rose>(out Rose rose))
+                {
+                    EventManager.RoseHitEvent(rose);
                 }
             }
-
-            
-            // Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            // float distance;
-
-            // if()
         }   
         #endregion
     }

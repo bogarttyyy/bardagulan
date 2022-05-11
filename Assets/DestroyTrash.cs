@@ -8,7 +8,13 @@ public class DestroyTrash : MonoBehaviour
     {
         if (col.gameObject.TryGetComponent<Trash>(out Trash result))
         {
+            EventManager.TrashOutOfBoundsEvent();
             Destroy(col.gameObject);
+        }
+
+        if (col.gameObject.TryGetComponent<Rose>(out Rose roseObject))
+        {
+            Destroy(roseObject.gameObject);
         }
     }
 }

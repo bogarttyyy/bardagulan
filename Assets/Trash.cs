@@ -7,16 +7,16 @@ public abstract class Trash : MonoBehaviour
     
     private void Start()
     {
-        EventManager.OnTrashHitEvent += HitDetected;
+        EventManager.OnRoseHitEvent += RoseHitDetected;
     }
 
-    private void HitDetected()
+    private void RoseHitDetected()
     {
-        
+        EventManager.TrashHitEvent(this);
     }
 
     private void OnDestroy()
     {
-        EventManager.OnTrashHitEvent -= HitDetected;
+        EventManager.OnRoseHitEvent -= RoseHitDetected;
     }
 }
